@@ -1,14 +1,14 @@
 import React from "react";
 import { View, Text } from "react-native";
+
 import { styles } from "./styles";
 
-
-const Products = () => {
-    return (
-        <View style={styles.container}>
-            <Text>Products</Text>
-        </View>
-    )
+const Categories = () => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Categories</Text>
+    </View>
+  );
 };
 
-export default Products;
+export default Categories;
