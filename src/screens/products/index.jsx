@@ -7,10 +7,7 @@ const Products = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>Products</Text>
-      <Button
-        title="Go to Product"
-        onPress={() => navigation.navigate("Product")}
-      />
+      <Button title="Go to Product" onPress={() => navigation.navigate("Product")} />
     </View>
   );
 };
