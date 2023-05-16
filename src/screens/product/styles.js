@@ -3,13 +3,13 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
   },
   name: {
-    fontFamily: "Inter-Regular",
-    fontSize: 16,
+    fontFamily: "Inter-Medium",
+    fontSize: 18,
     paddingVertical: 20,
   },
   description: {
@@ -25,5 +25,9 @@ export const styles = StyleSheet.create({
   weight: {
     fontSize: 12,
     fontFamily: "Inter-Regular",
+  },
+  image: {
+    width: "100%",
+    height: 260,
   },
 });
