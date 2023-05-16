@@ -24,9 +24,18 @@ const MainNavigator = () => {
         component={Products}
         options={({ route }) => ({
           title: route.params.name,
+          headerStyle: {
+            backgroundColor: route.params.color,
+          },
         })}
       />
-      <Stack.Screen name="Product" component={Product} />
+      <Stack.Screen
+        name="Product"
+        component={Product}
+        options={({ route }) => ({
+          title: route.params.name,
+        })}
+      />
     </Stack.Navigator>
   );
 };

@@ -10,6 +10,7 @@ const Categories = ({ navigation }) => {
     navigation.navigate("Products", {
       categoryId: item.id,
       name: item.name,
+      color: item.color,
     });
   };
 
