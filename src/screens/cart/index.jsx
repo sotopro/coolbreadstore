@@ -6,7 +6,6 @@ import { CartItem } from "../../components";
 import { CART } from "../../constants";
 
 const Cart = () => {
-  console.warn("CART", CART);
   const TOTAL = 2000;
   const onRemove = (id) => {
     console.warn(id);
