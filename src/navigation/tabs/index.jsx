@@ -12,7 +12,6 @@ const BottomTab = createBottomTabNavigator();
 
 const TabsNavigator = () => {
   const animatedValue = useRef(new Animated.Value(0)).current;
-
   const tabIconAnimation = () => {
     Animated.timing(animatedValue, {
       toValue: 1,
