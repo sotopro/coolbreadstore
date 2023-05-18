@@ -1,5 +1,7 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useRef, useEffect } from "react";
+import { Animated } from "react-native";
 
 import { COLORS } from "../../constants";
 import CartNavigator from "../cart";
@@ -9,6 +11,19 @@ import ShopNavigator from "../shop";
 const BottomTab = createBottomTabNavigator();
 
 const TabsNavigator = () => {
+  const animatedValue = useRef(new Animated.Value(0)).current;
+
+  const tabIconAnimation = () => {
+    Animated.timing(animatedValue, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  useEffect(() => {
+    tabIconAnimation();
+  }, [tabIconAnimation]);
   return (
     <BottomTab.Navigator
       initialRouteName="ShopTab"
@@ -33,7 +48,9 @@ const TabsNavigator = () => {
         options={{
           tabBarLabel: "Shop",
           tabBarIcon: ({ focused, color, size }) => (
-            <Ionicons name={focused ? "home" : "home-outline"} size={size} color={color} />
+            <Animated.View style={{ opacity: animatedValue }}>
+              <Ionicons name={focused ? "home" : "home-outline"} size={size} color={color} />
+            </Animated.View>
           ),
         }}
       />
