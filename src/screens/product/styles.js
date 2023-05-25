@@ -1,11 +1,13 @@
 import { StyleSheet } from "react-native";
 
+import { COLORS } from "../../constants";
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     // justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.background,
   },
   name: {
     fontFamily: "Inter-Medium",
