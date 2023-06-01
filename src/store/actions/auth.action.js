@@ -36,5 +36,29 @@ export const signUp = ({ email, password }) => {
 };
 
 export const signIn = ({ email, password }) => {
-  console.log("signIn");
+  return async (dispatch) => {
+    try {
+      const response = await fetch(FIREBASE_AUTH_SIGN_IN_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          returnSecureToken: true,
+        }),
+      });
+
+      const data = await response.json();
+
+      dispatch({
+        type: SIGN_IN,
+        token: data.idToken,
+        userId: data.localId,
+      });
+    } catch (error) {
+      throw error;
+    }
+  };
 };

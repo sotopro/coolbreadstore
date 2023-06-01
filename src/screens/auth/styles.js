@@ -25,24 +25,12 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+    minHeight: 340,
   },
   title: {
     fontFamily: "Inter-Bold",
     fontSize: 16,
     textAlign: "center",
-  },
-  label: {
-    fontSize: 14,
-    fontFamily: "Inter-Regular",
-    paddingVertical: 8,
-  },
-  input: {
-    height: 45,
-    borderBottomColor: COLORS.primary,
-    borderBottomWidth: 1,
-    width: "90%",
-    fontFamily: "Inter-Regular",
-    marginBottom: 5,
   },
   linkContainer: {
     justifyContent: "center",

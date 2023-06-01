@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 
 import { styles } from "./styles";
+import { Input } from "../../components";
 import { COLORS } from "../../constants";
 import { signIn, signUp } from "../../store/actions";
 
@@ -26,19 +27,19 @@ const Auth = () => {
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.title}>{title}</Text>
-        <Text style={styles.label}>Email</Text>
-        <TextInput
-          style={styles.input}
+        <Input
           placeholder="email@gmail.com"
           placeholderTextColor={COLORS.darkGray}
           autoCapitalize="none"
           autoCorrect={false}
           onChangeText={(text) => setEmail(text)}
           value={email}
+          label="Email"
+          error="Email is invalid"
+          touched
+          hasError
         />
-        <Text style={styles.label}>Password</Text>
-        <TextInput
-          style={styles.input}
+        <Input
           placeholder="********"
           placeholderTextColor={COLORS.darkGray}
           secureTextEntry
@@ -46,6 +47,10 @@ const Auth = () => {
           autoCorrect={false}
           onChangeText={(text) => setPassword(text)}
           value={password}
+          label="Password"
+          error="Password is invalid"
+          touched
+          hasError
         />
         <View style={styles.linkContainer}>
           <TouchableOpacity style={styles.link} onPress={onHandleChangeAuth}>
