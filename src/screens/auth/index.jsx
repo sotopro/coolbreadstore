@@ -1,11 +1,11 @@
 import { useReducer, useState } from "react";
-import { View, Text, TextInput, Button, TouchableOpacity } from "react-native";
-import { useDispatch } from "react-redux";
+import { View, Text, Modal, Button, TouchableOpacity, ActivityIndicator } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import { styles } from "./styles";
 import { Input } from "../../components";
 import { COLORS } from "../../constants";
-import { signIn, signUp } from "../../store/actions";
+import { clearError, signIn, signUp } from "../../store/actions";
 import { UPDATE_FORM, onInputChange } from "../../utils/form";
 
 const initialState = {
@@ -35,6 +35,7 @@ const formReducer = (state, action) => {
 
 const Auth = () => {
   const dispatch = useDispatch();
+  const { error, isLoading, hasError } = useSelector((state) => state.auth);
   const [isLogin, setIsLogin] = useState(true);
   const [formState, dispatchFormState] = useReducer(formReducer, initialState);
   const title = isLogin ? "Login" : "Register";
@@ -51,6 +52,10 @@ const Auth = () => {
         ? signIn({ email: formState.email.value, password: formState.password.value })
         : signUp({ email: formState.email.value, password: formState.password.value })
     );
+  };
+
+  const onHandleButtonModal = () => {
+    dispatch(clearError());
   };
 
   const onHandlerInputChange = ({ value, name }) => {
@@ -99,6 +104,18 @@ const Auth = () => {
           />
         </View>
       </View>
+      <Modal visible={hasError || isLoading} transparent animationType="fade">
+        <View style={styles.containerStyle}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalTitle}>{error ? error : "Loading"}</Text>
+            {error ? (
+              <Button title="OK" color={COLORS.text} onPress={onHandleButtonModal} />
+            ) : (
+              <ActivityIndicator size="small" color={COLORS.text} />
+            )}
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 };

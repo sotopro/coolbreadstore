@@ -53,4 +53,25 @@ export const styles = StyleSheet.create({
   submitContainer: {
     paddingVertical: 5,
   },
+  containerStyle: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContainer: {
+    width: "75%",
+    minHeight: 110,
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: COLORS.secondary,
+    backgroundColor: COLORS.primary,
+  },
+  modalTitle: {
+    fontSize: 14,
+    fontFamily: "Inter-Medium",
+    textAlign: "center",
+  },
 });

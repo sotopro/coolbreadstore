@@ -9,6 +9,7 @@ import { selectCategory } from "../../store/actions";
 const Categories = ({ navigation }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.data);
+
   const onSelected = (item) => {
     dispatch(selectCategory(item.id));
     navigation.navigate("Products", {
