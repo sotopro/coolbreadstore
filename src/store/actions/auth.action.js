@@ -1,4 +1,5 @@
 import { FIREBASE_AUTH_SIGN_IN_URL, FIREBASE_AUTH_SIGN_UP_URL } from "../../constants";
+import { ErrorFactory } from "../../utils/errors";
 import { authTypes } from "../types";
 
 const { SIGN_IN, SIGN_UP } = authTypes;
@@ -52,13 +53,15 @@ export const signIn = ({ email, password }) => {
 
       const data = await response.json();
 
+      console.warn(response);
+
       dispatch({
         type: SIGN_IN,
         token: data.idToken,
         userId: data.localId,
       });
     } catch (error) {
-      throw error;
+      throw ErrorFactory.createError("connection", "Network Request Failed");
     }
   };
 };
